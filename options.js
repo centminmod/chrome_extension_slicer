@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load the saved width value
   chrome.storage.sync.get('popupWidth', (data) => {
-    popupWidthInput.value = data.popupWidth || 600;
+    popupWidthInput.value = data.popupWidth || 640;
   });
 
   // Save the width value
