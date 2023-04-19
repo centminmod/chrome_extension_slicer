@@ -28,6 +28,9 @@ jobs:
           echo "RELEASE_ID=${RELEASE_ID}" >> $GITHUB_ENV
           echo "::set-output name=release_id::${RELEASE_ID}"
 
+      - name: Debug RELEASE_ID
+        run: echo "RELEASE_ID: ${{ env.RELEASE_ID }}"
+
       - name: Create release
         if: steps.check_release.outputs.release_id == 'null'
         id: create_release
