@@ -51,6 +51,11 @@ jobs:
           mkdir dist
           zip -r dist/chrome_extension_slicer_v${{ env.EXTENSION_VERSION }}.zip . -x "node_modules/*" ".git/*" ".github/*" ".gitignore" "package*.json" "README.md" "LICENSE" "screenshots/*"
 
+      - name: Debug upload URLs
+        run: |
+          echo "Create release upload URL: ${{ steps.create_release.outputs.upload_url }}"
+          echo "Check release upload URL: ${{ steps.check_release.outputs.upload_url }}"
+
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
