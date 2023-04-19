@@ -1,11 +1,12 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Text Slicer",
   "version": "0.1",
   "description": "A simple extension to load the Text Slicer tool.",
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+  "action": {
+    "default_icon": {
+      "48": "icon.png"
+    }
   },
   "options_page": "options.html",
   "permissions": [
@@ -15,5 +16,17 @@
   "icons": {
     "48": "icon.png"
   },
-  "content_security_policy": "frame-src 'self' https://slicer.centminmod.com; connect-src 'self' https://slicer.centminmod.com;"
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; frame-src 'self' https://slicer.centminmod.com; connect-src 'self' https://slicer.centminmod.com;"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://slicer.centminmod.com/*"],
+      "js": ["contentScript.js"],
+      "all_frames": true
+    }
+  ]
 }
