@@ -14,5 +14,6 @@
   ],
   "icons": {
     "48": "icon.png"
-  }
+  },
+  "content_security_policy": "frame-src 'self' https://slicer.centminmod.com; connect-src 'self' https://slicer.centminmod.com;"
 }
