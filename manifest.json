@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Text Slicer",
+  "version": "0.1",
+  "description": "A simple extension to load the Text Slicer tool.",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "icons": {
+    "48": "icon.png"
+  }
+}
