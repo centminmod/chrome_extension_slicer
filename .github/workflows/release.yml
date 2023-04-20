@@ -33,7 +33,7 @@ jobs:
           echo "RELEASE_ID: ${env.RELEASE_ID}"
 
       - name: Create release
-        if: steps.check_release.outputs.release_id == "null"
+        if: "steps.check_release.outputs.release_id == 'null'"
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -46,7 +46,7 @@ jobs:
           prerelease: false
       
       - name: Update release
-        if: steps.check_release.outputs.release_id != "null"
+        if: "steps.check_release.outputs.release_id != 'null'"
         run: |
           curl --request PATCH --header "Accept: application/vnd.github+json" --header "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" --url "https://api.github.com/repos/\${GITHUB_REPOSITORY}/releases/${{ env.RELEASE_ID }}" --data "{\"name\":\"Release ${{ env.EXTENSION_VERSION }}\", \"body\":\"Updated release: ${{ env.EXTENSION_VERSION }}\"}"
 
